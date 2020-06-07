@@ -50,7 +50,7 @@ int main()
     deviceQueueCreateInfo.flags = 0;
     uint32_t FamilyIndex = 0; //TODO: Search for best Family
     deviceQueueCreateInfo.queueFamilyIndex = FamilyIndex;
-    deviceQueueCreateInfo.queueCount = 1; //TODO: Load correct value
+    deviceQueueCreateInfo.queueCount = 1; //TODO: Load correct value <--- IF THIS IS CHANGED TO 0, IT WORKS
     deviceQueueCreateInfo.pQueuePriorities = NULL;
 
     VkPhysicalDeviceFeatures usedFeatures = {};
@@ -69,7 +69,7 @@ int main()
     //OUT_ERROR(mvk::createDevice(0, &deviceCreateInfo));//TODO: pick best Device
     VkDevice device;
     VkPhysicalDevice v = mvk::physicalDevices[0];
-    vkCreateDevice(v, &deviceCreateInfo, NULL, &device);
+    vkCreateDevice(v, &deviceCreateInfo, NULL, &device);//<--- ERROR here
     getchar();
     return 0;
 }
